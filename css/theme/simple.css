@@ -16,7 +16,7 @@ body {
 
 .reveal {
   font-family: "Lato", sans-serif;
-  font-size: 36px;
+  font-size: 38px;
   font-weight: normal;
   letter-spacing: -0.02em;
   color: black; }
@@ -37,7 +37,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: black;
-  font-family: "News Cycle", Impact, sans-serif;
+  font-family: "News Cycle", sans-serif;
   line-height: 1.1em;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -91,6 +91,11 @@ body {
   -ms-transition: all .2s linear;
   -o-transition: all .2s linear;
   transition: all .2s linear; }
+}
+
+.reveal section .half-size {
+  height: 50% !important;
+  width: 50% !important;
 }
 
 .reveal a:hover img {
