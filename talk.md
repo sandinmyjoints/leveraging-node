@@ -2,7 +2,9 @@
 at Fluencia
 
 Note:
-Aprovechando Node.js
+- My name is William, and I'm going to talk about how we leverage Node.js at my
+  company, Fluencia.
+- Aprovechando Node.js
 
 
 
@@ -45,17 +47,18 @@ Note:
 <img class="logo" src="./img/logo_fluencia.png" alt="Fluencia">
 
 Note:
-- I'm William Bert. Senior Software Engineer at Fluencia. I've been here since 2012.
-- What is Fluencia? Best way to learn Spanish online. Subscription. Over 100K
+- I'm William Bert. Senior Software Engineer at Fluencia. I've been here for
+  about two years.
+- What is Fluencia? Best way to learn Spanish online. Subscription. Over 150K
   users.
-- We also run a reference site called SpanishDict. That's the high-traffic site.
-  It used to be the company of the company, but we like Fluencia better.
 
 
 
 <img class="logo" src="./img/logo_sd.png" alt="SpanishDict">
 
 Note:
+- We also run a reference site called SpanishDict. That's the high-traffic site.
+  It used to be the company of the company, but we like Fluencia better.
 - SpanishDict gets around 10 million unique visitors a month.
 - Top result if you google "Spanish".
 - Both of these applications are backed by Node.
@@ -73,7 +76,7 @@ Note:
 Note:
 - Speed/scalability:
 - Google has made huge investment in making V8 fast.
-- No threads, very lightweight, very scalable.
+- No threads. Instead, an event loop. Very lightweight, very scalable.
 - Community:
 - Big community and growing.
 - Lots of libraries already, more being released all the time.
@@ -81,20 +84,21 @@ Note:
 - I think in 2011, choosing Node when thinking about productivity was a bold
   choice.
 - Node does async throughout, unlike other languages where it is bolted on, and
-  not all libs support it.
-- It is changing quickly, but it is stable enough.
+  not all libs support it. Builtin async support throughout was attractive.
+- It was changing quickly, but it was stable enough.
 - The core is small. The philosophy is for small modules that can be pieced
   together. Simplicity.
+
 
 
 ## Always bet on Javascript.
 
 Note:
-- Common code between front-end and back-end. Lessons learned in one can often
-  be applied to other. Reduced cost of context switching. Shared code makes
-  validation easier.
+- Common code between front-end and back-end is a nice win.
+- Lessons learned in one can often be applied to other. Reduced cost of context
+  switching. Actual shared code can make life easier.
 - The future (for us) included an SPA. Would need to do heavy lifting in
-  Javascript. Full stack JS benefits.
+  Javascript. Full JS stack benefits.
 - So this stack just makes sense.
 
 
@@ -120,6 +124,7 @@ Note:
 - It was a brand new project in the summer of 2012 when I started with the
   company.
 - Now it has more than 150K users.
+- It has some supporting services also built with Node.
 
 
 
@@ -128,25 +133,29 @@ style="height: 50%; width: 50%">
 
 * AWS
 * MongoDB / Mongoose
-* Node
+* Node.js
 * Express
+
 * Require
 * Backbone
-* Jade + LESS + Handlebars
+* Jade + LESS
 * Travis
+
+Note:
+- Fluencia's stack.
 
 
 
 <img class="logo half-size" src="./img/logo_fluencia.png" alt="Fluencia"
 style="height: 50%; width: 50%">
-## Shared code
 
-About 8K LOC shared between client and server:
+### About 8K LOC shared code
+### between client and server:
 
 - a/b experiments
 - access control
 - constants
-- native language support (nls) dictionary
+- native language support (nls)
 - validation
 
 Note:
@@ -156,6 +165,7 @@ Note:
 - Shared code makes life easier.
 - Lessons learned in one place can often be applied to other.
 - Reduced cost of context switching.
+- Certain things can be done exactly the same between client and server.
 
 
 
@@ -166,6 +176,11 @@ width: 50%">
 * Atalanta: data access layer.
 * Spotcheck: lightweight S3 log querying.
 
+Note:
+- Our other main product is SpanishDict. 10M unique visitors/month.
+- Traditional website.
+- Also have several supporting services for it written in Node.
+
 
 
 <img class="logo" src="./img/logo_sd.png" alt="SpanishDict" style="height: 50%;
@@ -173,10 +188,14 @@ width: 50%">
 
 * AWS
 * MySQL
-* Node
+* Node.js
 * Express
+
 * Browserify
 * Travis
+
+Note:
+- SpanishDict's stack.
 
 
 
@@ -185,27 +204,30 @@ width: 50%">
 ## Productivity
 
 - 700+ unit tests that run in seconds.
-- 10 minute deploys, deploy once a day.
-- Speed continues **not** to be a problem.
+- 10 minute deploys, deploy at least once a day.
+- Speed continues **not** to be a problem as add new features.
 - 2-3 boxes running each application, for redundancy, not load.
+
+Note:
+- Some evidence of why I think we can be productive with Node.
 
 
 
 <img class="logo" src="./img/logo_sd.png" alt="SpanishDict" style="height: 50%;
 width: 50%">
-## Proxying
 
 Dirty secret: a few parts of our site are still powered by legacy PHP app.
 
 Node makes proxying easy.
 
-* `node-http-proxy`
-* Tweak as needed to reframe contents using new header, styles
+* `node-http-proxy` module.
+* Tweak as needed to reframe contents using new header and footer, styles.
 
 Note:
 - Very practical choice.
-- We are a small shop. 2 engineers, then 3, for a long time.
+- We are a small shop. For a long time, 2 engineers, then 3, now we have a few more.
 - We do cost/benefit analysis on everything we do.
+- We can implement things quickly and try new things out at a very low cost.
 
 
 
@@ -218,95 +240,112 @@ width: 50%">
 ## Thriving
 ## in Nodeland
 
+Note:
+I'm going to talk about some of the practices we use to survive and thrive while
+using Node.
+
 
 
 ## Challenges
 
-* Figuring out uptime, error handling and recovery.
-* Experimental / unstable parts.
-* Bringing developers up to speed.
-* Things change fast.
-* Not clear what are best practices.
+* Not always clear what are best practices.
+  * npm: point of failure.
+  * Error handling and recovery.
 * Lots of modules to sort through.
-* npm point of failure.
+* Bringing new developers up to speed.
 
 Note:
 - Let's be clear: Node is not perfect.
 - Here are some of the challenges we've found.
-- Node ecosystem was (is) immature. Original Mysql lib did not do connection
-  pooling correctly.
+- Node is young and changing quickly. Best practices are not always clear or
+  even known.
+- A couple examples.
+- Node ecosystem is huge, and was (is) immature. For example, the original Mysql
+  lib did not do connection pooling correctly. So we had to reimplement it
+  ourselves. Price you pay.
+- New developers are not always thinking asynchronously, though more and more
+  they are!
 
 
 
-### Care about ops
-- Thorough, informative logging
-- Handle errors and uncaught exceptions (understand the difference!)
-- Resources probably less of a problem
+### Care about ops.
+- Thorough, informative logging.
+- Resources maybe not a problem.
+- Handle errors and uncaught exceptions.
 
 Note:
+- Logging brings visibility so you can figure out and solve problems.
 - Resources were less of a problem for us, anyway.
+- Error handling and the notorious uncaught exception can cause downtime. Figure
+  out what is acceptable to you and then figure out how to accomplish it. A little more...
 
 
 
-## Towards 100% Uptime
+### Towards 100% uptime.
 
-- Reading cluster, domain, and child_process modules helped somewhat.
-- Though they are marked as experimental and unstable.
-
-
-
-## Check in `node_modules`
-
-Eliminate npm as a point of failure.
+- Had a problem. Needed a solution.
+- Looked for community resources.
+- Read `cluster`, `child_process`, and `domain` module source.
+- Developed a solution that works for us.
 
 Note:
-- There are ways around the annoyances of checking in libs.
-- Do `npm rebuild` on deploy.
+- We had a problem with occasional uncaught exceptions bringing down a whole
+  worker process which was serving many users at once.
+- Dove into it and figured out an approach.
 
 
 
-## Embrace the Community
+## Embrace the community.
 
-* Hang out on #Node.js IRC.
 * Follow leaders on Twitter, other channels.
-* Meetups are great!
+* Hang out on #Node.js IRC.
+* Meetups!
 * We made our own meetup: Nova Node.
+
+Note:
+- The community is a huge resource, lots of smart people and good knowlege.
 
 
 
 ## Learn the ecosystem.
 
 Note:
+- Node core is small. Does much less out of the box than some things.
 - Node ecosystem is very modular. Double-edged sword: more choices, more
   innovation. Less clear what is best. Things might not be maintained.
-- Node core is less opinionated.
-- Node is cutting-edge. Cuts both ways: smaller pool of potential candidates,
-  less experience with Node. But candidates who eager to learn something new.
-  Excitement.
+- Node is still very new. Also double-edge sword: smaller pool of potential
+  candidates, less experience with Node. But candidates eager to learn something
+  new. Excitement.
 
 
 
-## How to choose libs
+## How to find modules.
 
-There is no perfect way.
+- Favorite search engine
+- Community / word of mouth
+- What are your deps' deps?
 
-- Who created it
-- Who maintains it
-- Who uses it
-- NPM last-published date
-- Recent activity
-- Github stars / open issues / open PRs
-- Quality of documentation
-- etc.
+Note:
+- Finding modules is usually easy.
 
 
-## How to find modules
 
-- Community
-- Word of mouth
-- Blog
-- RSS
-- Twitter
+## How to choose modules.
+
+There is no perfect way, but consider:
+
+- Who created/maintains it?
+- Who uses it?
+- NPM last-published date?
+- Recent activity?
+- Open issues and PRs?
+- Decent docs?
+- ??
+
+Note:
+- Choosing modules can be trickier.
+- How to evaluate what is best? Here are some ideas.
+- Can always contribute back to open source modules!
 
 
 
@@ -321,26 +360,7 @@ Note:
 
 ## How we learned
 ## and continue to learn
-## Node
-
-
-
-## Onboarding
-
-* Small new tickets
-* Point them in right direction
-* Share patterns,
-* Pair programming
-* Code review.
-* Be active in community.
-* Has anyone used nodeschool?
-
-Note:
-- We are growing. Went from 3 FT engineers to 5 + interns, and actively hiring.
-- Onboarding is a big concern.
-- doing personal projects,
-- Googling solution and subscribe to RSS feed to read
-- interesting articles are my ways of learning Node
+## Node.js.
 
 
 
@@ -351,6 +371,7 @@ Note:
 - Build something. Anything.
 - My first big assignment was to make a server to proxy tts requests to our tts
   software.
+
 
 
 ## Read all the docs.
@@ -372,6 +393,21 @@ the community here is friendly, welcoming, supportive, fun.
 
 
 
+## Onboarding.
+
+* Small new tickets
+* Point new devs in right direction
+* Pair programming
+* Code review
+* Encourage personal projects
+* Encourage community involvement
+
+Note:
+- Onboarding can be fun!
+- We are growing. Went from 3 FT engineers to 5 + interns, and actively hiring.
+
+
+
 ## [engineering.fluencia.com](http://engineering.fluencia.com)
 ## [fluencia.com/about-us/careers](http://www.fluencia.com/about-us/careers/)
 ## [@williamjohnbert](http://www.twitter.com/williamjohnbert)
@@ -379,3 +415,4 @@ the community here is friendly, welcoming, supportive, fun.
 Note:
 - Read our engineering blog to learn more.
 - If this sounded interesting, check out our careers page.
+- Thanks for listening. That's it.
