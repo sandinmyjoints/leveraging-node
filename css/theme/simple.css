@@ -153,3 +153,7 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: darkblue; }
+
+.reveal li {
+  line-height: 1.3em;
+}
