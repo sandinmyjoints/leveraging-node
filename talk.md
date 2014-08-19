@@ -149,8 +149,8 @@ Note:
 <img class="logo half-size" src="./img/logo_fluencia.png" alt="Fluencia"
 style="height: 50%; width: 50%">
 
-### About 8K LOC shared code
-### between client and server:
+### About 8K LOC shared
+### between client and server.
 
 - a/b experiments
 - access control
@@ -205,7 +205,7 @@ width: 50%">
 
 - 700+ unit tests that run in seconds.
 - 10 minute deploys, deploy at least once a day.
-- Speed continues **not** to be a problem as add new features.
+- Speed continues **not** to be a problem as we add new features..
 - 2-3 boxes running each application, for redundancy, not load.
 
 Note:
@@ -216,17 +216,17 @@ Note:
 <img class="logo" src="./img/logo_sd.png" alt="SpanishDict" style="height: 50%;
 width: 50%">
 
-Dirty secret: a few parts of our site are still powered by legacy PHP app.
-
-Node makes proxying easy.
-
-* `node-http-proxy` module.
-* Tweak as needed to reframe contents using new header and footer, styles.
+* Dirty secret: a few parts of our site are still powered by legacy PHP app.
+* Node makes proxying easy:
+  * `node-http-proxy` module.
+  * Tweak as needed to inject new header, footer, styles.
 
 Note:
+- A dirty secret: a few parts, < 1% of traffic, still powered by PHP.
 - Very practical choice.
 - We are a small shop. For a long time, 2 engineers, then 3, now we have a few more.
 - We do cost/benefit analysis on everything we do.
+- Complicated parts to reimplement. Why do it?
 - We can implement things quickly and try new things out at a very low cost.
 
 
@@ -241,7 +241,7 @@ width: 50%">
 ## in Nodeland
 
 Note:
-I'm going to talk about some of the practices we use to survive and thrive while
+- Now I'll talk about some of the practices we use to survive and thrive while
 using Node.
 
 
