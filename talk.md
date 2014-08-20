@@ -2,8 +2,9 @@
 at Fluencia
 
 Note:
-- My name is William, and I'm going to talk about how we leverage Node.js at my
-  company, Fluencia.
+- My name is William Bert
+- Thanks for coming tonight. I'm really excited to be here.
+- I'm going to talk about how we leverage Node.js where I work, Fluencia.
 - Aprovechando Node.js
 
 
@@ -28,9 +29,9 @@ Note:
 Note:
 - This is the question the company was asking itself.
 - The existing PHP codebase was showing its age.
-- Engineering team at the time (such as it was, really the CEO and a new
-  director of engineering) was very aware of PHP's limitations as a language,
-  community, etc..
+- Engineering team at the time (which is really the CEO and a new director of
+  engineering) was very aware of PHP's limitations as a language, community,
+  etc..
 - Where to go in the future?
 
 
@@ -39,31 +40,35 @@ Note:
 
 Note:
 - Big surprise.
-- So this company, Fluencia, went with Node, for reasons that I will talk about.
-- But first, a little background.
+- So this company went with Node, for reasons that I will talk about.
+- I think this was a somewhat bold choice but showed a lot of foresight.
+- I'd like to take credit for it, but I wasn't part of this company when this
+  decision was made, in fact I should probably give a little more background...
 
 
 
 <img class="logo" src="./img/logo_fluencia.png" alt="Fluencia">
 
 Note:
-- I'm William Bert. Senior Software Engineer at Fluencia. I've been here for
-  about two years.
-- What is Fluencia? Best way to learn Spanish online. Subscription. Over 150K
-  users.
+- I'm a Senior Software Engineer at Fluencia. I've been here for a little more
+  thna two years, since mid-2012.
+- What is Fluencia? It's our company, and also one of our products.
+- The product is the best way to learn Spanish online. SPA. Lots of lessons. 2
+  years of college Spanish. Subscription. Launched 1 year ago. Over 150K users.
 
 
 
 <img class="logo" src="./img/logo_sd.png" alt="SpanishDict">
 
 Note:
-- We also run a reference site called SpanishDict. That's the high-traffic site.
-  It used to be the company of the company, but we like Fluencia better.
+- We also run a website called SpanishDict.com. That's the high-traffic site.
+  It's older than Fluencia, and it used to be the name of the company, but we
+  like Fluencia better.
 - SpanishDict gets around 10 million unique visitors a month.
 - Top result if you google "Spanish".
-- Both of these applications are backed by Node.
-- Why? How did it come to be? Some of this was before my time, but I have it on
-  good authority from some of the people who were there...
+- Both of these products are backed by Node.
+- Why? How did it come to be? I have it on good authority from some of the
+  people who were there that this is what they were thinking about...
 
 
 
@@ -74,36 +79,40 @@ Note:
 ## Productivity
 
 Note:
-- Speed/scalability:
-- Google has made huge investment in making V8 fast.
+- Speed/scalability: Google has made huge investment in making V8 fast. So Node
+  is built on a very fast runtime.
 - No threads. Instead, an event loop. Very lightweight, very scalable.
-- Community:
-- Big community and growing.
-- Lots of libraries already, more being released all the time.
+- Community: Big community and growing.
+- Lots of libraries already, more being released all the time. Momentum.
 - Productivity:
 - I think in 2011, choosing Node when thinking about productivity was a bold
-  choice.
-- Node does async throughout, unlike other languages where it is bolted on, and
-  not all libs support it. Builtin async support throughout was attractive.
-- It was changing quickly, but it was stable enough.
-- The core is small. The philosophy is for small modules that can be pieced
-  together. Simplicity.
+  choice. But several reasons:
+- Node does async control flow throughout, unlike other languages where it is
+  bolted on, and standard lib / many libs don't support it. Builtin async
+  support throughout was attractive.
+- The core is small. The philosophy is for limited modules that can be pieced
+  together. Simplicity. Choose from a wide variety of small modules and built
+  something greater than the sum of the parts.
+- It was stable enough that people were using it to get things, but it was
+  continuously improving at a very rapid pace.
+- And finally...
 
 
 
 ## Always bet on Javascript.
 
 Note:
+- It's ubiquitous.
 - Common code between front-end and back-end is a nice win.
 - Lessons learned in one can often be applied to other. Reduced cost of context
   switching. Actual shared code can make life easier.
-- The future (for us) included an SPA. Would need to do heavy lifting in
-  Javascript. Full JS stack benefits.
+- The future (in 2011) included an SPA. Would need to do heavy lifting in
+  Javascript. Full JS stack had benefits.
 - So this stack just makes sense.
 
 
 
-## How we use Node.
+## How we use Node today.
 
 Note:
 - That's enough about the past and how we made the choice.
@@ -163,9 +172,9 @@ Note:
 - Fluencia has about 8K LOC shared between client and server:
 - Literally common code between front-end and back-end.
 - Shared code makes life easier.
+- Certain things can be done exactly the same between client and server.
 - Lessons learned in one place can often be applied to other.
 - Reduced cost of context switching.
-- Certain things can be done exactly the same between client and server.
 
 
 
@@ -205,11 +214,11 @@ width: 50%">
 
 - 700+ unit tests that run in seconds.
 - 10 minute deploys, deploy at least once a day.
-- Speed continues **not** to be a problem as we add new features..
+- Speed continues **not** to be a problem as we add new features.
 - 2-3 boxes running each application, for redundancy, not load.
 
 Note:
-- Some evidence of why I think we can be productive with Node.
+- Some evidence of how we're able to be productive with Node.
 
 
 
@@ -219,7 +228,7 @@ width: 50%">
 * Dirty secret: a few parts of our site are still powered by legacy PHP app.
 * Node makes proxying easy:
   * `node-http-proxy` module.
-  * Tweak as needed to inject new header, footer, styles.
+  * Tweak as needed to inject updated header, footer, styles.
 
 Note:
 - A dirty secret: a few parts, < 1% of traffic, still powered by PHP.
@@ -227,7 +236,8 @@ Note:
 - We are a small shop. For a long time, 2 engineers, then 3, now we have a few more.
 - We do cost/benefit analysis on everything we do.
 - Complicated parts to reimplement. Why do it?
-- We can implement things quickly and try new things out at a very low cost.
+- An example of how Node allows you to implement things quickly and try new
+  things out at a very low cost.
 
 
 
@@ -259,7 +269,8 @@ Note:
 - Here are some of the challenges we've found.
 - Node is young and changing quickly. Best practices are not always clear or
   even known.
-- A couple examples.
+- A couple examples. (slide)
+- Is checking in node_modules a best practice? It solved our problem, but is it?
 - Node ecosystem is huge, and was (is) immature. For example, the original Mysql
   lib did not do connection pooling correctly. So we had to reimplement it
   ourselves. Price you pay.
@@ -274,7 +285,8 @@ Note:
 - Handle errors and uncaught exceptions.
 
 Note:
-- Logging brings visibility so you can figure out and solve problems.
+- Logging brings visibility so you can figure out and solve problems. Several
+  good libraries to help with this.
 - Resources were less of a problem for us, anyway.
 - Error handling and the notorious uncaught exception can cause downtime. Figure
   out what is acceptable to you and then figure out how to accomplish it. A little more...
@@ -312,7 +324,8 @@ Note:
 Note:
 - Node core is small. Does much less out of the box than some things.
 - Node ecosystem is very modular. Double-edged sword: more choices, more
-  innovation. Less clear what is best. Things might not be maintained.
+  innovation but can be less clear what is best. Also, things might not be
+  maintained.
 - Node is still very new. Also double-edge sword: smaller pool of potential
   candidates, less experience with Node. But candidates eager to learn something
   new. Excitement.
@@ -369,8 +382,11 @@ Note:
 Note:
 - Can only really learn by doing.
 - Build something. Anything.
-- My first big assignment was to make a server to proxy tts requests to our tts
-  software.
+- My first big assignment was to make a server to proxy TTS requests to the
+  command-line based, definitely not-internet friendly enterprise software we'd
+  licensed to generate the actual tts audio.
+- Great project to learn how to structure an Express application, learn about
+  streams and piping, and about communicating with child processes.
 
 
 
@@ -388,8 +404,9 @@ Note:
 
 Note:
 - Pick something, anything that you want to learn about.
-- No better way to learn than putting yourself in the spotlight. It helps that
-the community here is friendly, welcoming, supportive, fun.
+- No greater motivation to learn than putting yourself in the spotlight. It
+helps that the community, especially here in DC in my experience, is friendly,
+welcoming, supportive, fun.
 
 
 
@@ -403,8 +420,9 @@ the community here is friendly, welcoming, supportive, fun.
 * Encourage community involvement
 
 Note:
-- Onboarding can be fun!
-- We are growing. Went from 3 FT engineers to 5 + interns, and actively hiring.
+- Onboarding is great fun! Watching someone appreciate the power at their fingertips.xs
+- We are growing. Went from 2 FT engineers when I started to 5 + interns, and
+  actively hiring.
 
 
 
@@ -414,5 +432,5 @@ Note:
 
 Note:
 - Read our engineering blog to learn more.
-- If this sounded interesting, check out our careers page.
+- If what we do sounded interesting, check out our careers page.
 - Thanks for listening. That's it.
