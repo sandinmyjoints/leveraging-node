@@ -4,7 +4,8 @@ at Fluencia
 Note:
 - My name is William Bert
 - Thanks for coming tonight. I'm really excited to be here.
-- I'm going to talk about how we leverage Node.js where I work, Fluencia.
+- I'm going to talk about how we leverage Node.js at Fluencia to help deliver
+  lots of value to our users as quickly as possible.
 - Aprovechando Node.js
 
 
@@ -17,8 +18,8 @@ Note:
 
 Note:
 - I want to start by briefly turning back the clock to late 2011.
-- Put yourself in the shoes of the CEO of a small (like 3 employees) but growing
-  company.
+- Put yourself in the shoes of the CEO of a small (like 2-3 employees total) but
+  growing company.
 - (slides)
 
 
@@ -67,8 +68,8 @@ Note:
 - SpanishDict gets around 10 million unique visitors a month.
 - Top result if you google "Spanish".
 - Both of these products are backed by Node.
-- Why? How did it come to be? I have it on good authority from some of the
-  people who were there that this is what they were thinking about...
+- Why? How did it come to be? Here is what the people who made that decision
+  were thinking about...
 
 
 
@@ -85,6 +86,7 @@ Note:
 - Community: Big community and growing.
 - Lots of libraries already, more being released all the time. Momentum.
 - Productivity:
+- Our focus is on relentlessly delivering value for our users.
 - I think in 2011, choosing Node when thinking about productivity was a bold
   choice. But several reasons:
 - Node does async control flow throughout, unlike other languages where it is
@@ -141,7 +143,7 @@ Note:
 style="height: 50%; width: 50%">
 
 * AWS
-* MongoDB / Mongoose
+* MongoDB
 * Node.js
 * Express
 
@@ -172,9 +174,7 @@ Note:
 - Fluencia has about 8K LOC shared between client and server:
 - Literally common code between front-end and back-end.
 - Shared code makes life easier.
-- Certain things can be done exactly the same between client and server.
-- Lessons learned in one place can often be applied to other.
-- Reduced cost of context switching.
+- Certain things can be done exactly the same between client and server, such as (slide)
 
 
 
@@ -210,7 +210,7 @@ Note:
 
 <img class="logo" src="./img/logo_sd.png" alt="SpanishDict" style="height: 50%;
 width: 50%">
-## Productivity
+## Productivity.
 
 - 700+ unit tests that run in seconds.
 - 10 minute deploys, deploy at least once a day.
@@ -228,7 +228,7 @@ width: 50%">
 * Dirty secret: a few parts of our site are still powered by legacy PHP app.
 * Node makes proxying easy:
   * `node-http-proxy` module.
-  * Tweak as needed to inject updated header, footer, styles.
+  * Tweaked to inject updated header, footer, styles.
 
 Note:
 - A dirty secret: a few parts, < 1% of traffic, still powered by PHP.
@@ -241,14 +241,8 @@ Note:
 
 
 
-<img class="logo" src="./img/logo_sd.png" alt="SpanishDict" style="height: 50%;
-width: 50%">
-<img class="logo" src="./img/routing.svg" alt="SpanishDict routing">
-
-
-
 ## Thriving
-## in Nodeland
+## in Nodeland.
 
 Note:
 - Now I'll talk about some of the practices we use to survive and thrive while
@@ -256,7 +250,7 @@ using Node.
 
 
 
-## Challenges
+## Challenges.
 
 * Not always clear what are best practices.
   * npm: point of failure.
@@ -271,6 +265,7 @@ Note:
   even known.
 - A couple examples. (slide)
 - Is checking in node_modules a best practice? It solved our problem, but is it?
+- Error handling recovery -- more about that in a moment.
 - Node ecosystem is huge, and was (is) immature. For example, the original Mysql
   lib did not do connection pooling correctly. So we had to reimplement it
   ourselves. Price you pay.
@@ -295,7 +290,7 @@ Note:
 
 ### Towards 100% uptime.
 
-- Had a problem. Needed a solution.
+- Had a problem.
 - Looked for community resources.
 - Read `cluster`, `child_process`, and `domain` module source.
 - Developed a solution that works for us.
@@ -303,6 +298,9 @@ Note:
 Note:
 - We had a problem with occasional uncaught exceptions bringing down a whole
   worker process which was serving many users at once.
+- It wasn't good enough that a dead worker would be replaced quickly, we needed
+  it to gracefully exit, so that for example user question-answer events would
+  not be lost.
 - Dove into it and figured out an approach.
 
 
@@ -353,7 +351,7 @@ There is no perfect way, but consider:
 - Recent activity?
 - Open issues and PRs?
 - Decent docs?
-- ??
+- etc.
 
 Note:
 - Choosing modules can be trickier.
@@ -412,25 +410,27 @@ welcoming, supportive, fun.
 
 ## Onboarding.
 
-* Small new tickets
-* Point new devs in right direction
-* Pair programming
-* Code review
-* Encourage personal projects
-* Encourage community involvement
+* Small new tickets.
+* Point new devs in right direction.
+* Pair programming.
+* Code review.
+* Encourage personal projects.
+* Encourage community involvement.
 
 Note:
-- Onboarding is great fun! Watching someone appreciate the power at their fingertips.xs
+- Onboarding is great fun! Watching someone appreciate the power at their fingertips.
 - We are growing. Went from 2 FT engineers when I started to 5 + interns, and
   actively hiring.
 
 
 
-## [engineering.fluencia.com](http://engineering.fluencia.com)
-## [fluencia.com/about-us/careers](http://www.fluencia.com/about-us/careers/)
-## [@williamjohnbert](http://www.twitter.com/williamjohnbert)
+### [engineering.fluencia.com](http://engineering.fluencia.com)
+### [fluencia.com/about-us/careers](http://www.fluencia.com/about-us/careers/)
+### [@williamjohnbert](http://www.twitter.com/williamjohnbert)
 
 Note:
+- So that is how we leverage Node.js to deliver value to our users as fast as
+  possible at Fluencia.
 - Read our engineering blog to learn more.
 - If what we do sounded interesting, check out our careers page.
-- Thanks for listening. That's it.
+- Thanks for listening!
